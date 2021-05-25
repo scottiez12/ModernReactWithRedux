@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
+import Spinner from "./Spinner";
 
 //function
 // const App = () => {
@@ -43,15 +44,20 @@ class App extends React.Component {
     console.log("Component was re-rendered after update");
   }
 
-  //React says we have to define render()
-  render() {
+  renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Err : {this.state.errorMessage}</div>;
     }
     if (!this.state.errorMessage && this.state.lat) {
       return <SeasonDisplay lat={this.state.lat} />;
     }
-    return <div>Loading...</div>;
+    return <Spinner message="Please accept location request" />;
+  }
+
+  //React says we have to define render()
+  //try to avoid conditionals (multiple returns) in your render()... make helper functions if you have to.
+  render() {
+    return <div className="border red">{this.renderContent()}</div>;
   }
 }
 
