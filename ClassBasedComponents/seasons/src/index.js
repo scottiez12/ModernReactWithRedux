@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import SeasonDisplay from "./SeasonDisplay";
 
 //function
 // const App = () => {
@@ -17,24 +18,40 @@ class App extends React.Component {
   constructor(props) {
     //super is a reference to the React.Component ctor function, and the one we define includes our props
     super(props);
-
     //once super is initialized, we can use state
-    this.state = { lat: null };
+    //THIS IS THE ONLY TIME WE DO DIRECT ASSIGNMENT TO THIS.STATE
+    this.state = { lat: null, errorMessage: "" };
+  }
 
-    //by putting this here, we're not making this call every time the render() calls..
-    //that way we're not double fetching or bogging down the server when the state changes
+  //alternative way of declaring state..
+  state = { lat: null, errorMessage: "" };
+
+  //using some lifecycle methods
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
-      (position) => {
-        //we call this function to set our state
-        this.setState({ lat: position.coords.latitude });
-      },
-      (err) => console.log(err)
+      //we call this function to set our state
+      (position) => this.setState({ lat: position.coords.latitude }),
+      //we did not assign the states value like below!!!
+      //this.state.lat = position.coords.latitude
+      (err) => this.setState({ errorMessage: err.message })
     );
+
+    console.log("My component was rendered to the screen");
+  }
+
+  componentDidUpdate() {
+    console.log("Component was re-rendered after update");
   }
 
   //React says we have to define render()
   render() {
-    return <div>Latitude:{this.state.lat}</div>;
+    if (this.state.errorMessage && !this.state.lat) {
+      return <div>Err : {this.state.errorMessage}</div>;
+    }
+    if (!this.state.errorMessage && this.state.lat) {
+      return <SeasonDisplay lat={this.state.lat} />;
+    }
+    return <div>Loading...</div>;
   }
 }
 
