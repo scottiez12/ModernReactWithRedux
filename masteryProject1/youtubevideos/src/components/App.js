@@ -9,7 +9,7 @@ class App extends React.Component {
 
   //set a default search
   componentDidMount() {
-    this.onTermSubmit("C# Tutorial");
+    this.onTermSubmit("Modern React with Redux");
   }
 
   onTermSubmit = async (term) => {
