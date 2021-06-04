@@ -4,7 +4,7 @@ import jsonplaceholder from "../apis/jsonPlaceHolder";
 export const fetchPosts = () => async (dispatch) => {
   const response = await jsonplaceholder.get("/posts");
 
-  dispatch({ type: "FETCH_POSTS", payload: response });
+  dispatch({ type: "FETCH_POSTS", payload: response.data });
 };
 
 //so this is totally fine not having to us async
