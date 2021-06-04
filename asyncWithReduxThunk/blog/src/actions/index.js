@@ -1,11 +1,15 @@
 import jsonplaceholder from "../apis/jsonPlaceHolder";
 
-export const fetchPosts = async () => {
-  //Bad approach!!!
+//correct syntax for async/await with redux thunk, the way it's commonly refactored
+export const fetchPosts = () => async (dispatch) => {
   const response = await jsonplaceholder.get("/posts");
 
-  return {
-    type: "FETCH_POST",
-    payload: response,
-  };
+  dispatch({ type: "FETCH_POSTS", payload: response });
 };
+
+//so this is totally fine not having to us async
+// export const selectPost = () => {
+//   return {
+//     type: "SELECT_POST",
+//   };
+// };
