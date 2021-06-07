@@ -1,0 +1,3 @@
+Client Id for google oauth
+
+340020876293-igndu4rk6c9q4fg1klpsshjme136fdm9.apps.googleusercontent.com
