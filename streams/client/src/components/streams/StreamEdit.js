@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
 
 import { fetchStream, editStream } from "../../actions";
 import StreamForm from "./StreamForm";
@@ -12,7 +13,7 @@ class StreamEdit extends React.Component {
 
   //the callback being passed from StreamForm
   onSubmit = (formValues) => {
-    console.log(formValues);
+    this.props.editStream(this.props.match.params.id, formValues);
   };
 
   render() {
@@ -24,7 +25,9 @@ class StreamEdit extends React.Component {
         <h3>Edit a Stream</h3>
         <StreamForm
           onSubmit={this.onSubmit}
-          initialValues={this.props.stream}
+          //this lodash function allows us to just grab the stuff we want, so we're not passing around the
+          //record ID and/or the userId... or ultimately any information that really isn't relevant.
+          initialValues={_.pick(this.props.stream, "title", "description")}
         />
       </div>
     );
