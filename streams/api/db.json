@@ -38,6 +38,12 @@
       "description": "successssss.",
       "userId": "104891079613684241705",
       "id": 7
+    },
+    {
+      "title": "After Refactor",
+      "description": "Did a lot of this logic in Blazor unknowningly.",
+      "userId": "104891079613684241705",
+      "id": 8
     }
   ]
 }
