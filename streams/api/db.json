@@ -15,19 +15,6 @@
       "description": "Heres some stream.",
       "id": 3
     },
-
-    {
-      "title": "Stream 4",
-      "description": "with a patch request!",
-      "userId": "104891079613684241705",
-      "id": 5
-    },
-    {
-      "title": "Unexpected Behavior",
-      "description": "Didnt see that coming.",
-      "userId": "104891079613684241705",
-      "id": 6
-    },
     {
       "title": "Testing programattic routing",
       "description": "successssss.",
@@ -39,6 +26,12 @@
       "description": "Did a lot of this logic in Blazor unknowningly.",
       "userId": "104891079613684241705",
       "id": 8
+    },
+    {
+      "title": "Router Switch",
+      "description": "Is kind of silly.",
+      "userId": "104891079613684241705",
+      "id": 9
     }
   ]
 }
